@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blog Admin | Phạm Đức Quân</title>
+  <link rel="icon" href="/assets/icons/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/custom-theme.css?v=6.0">
+  <link rel="stylesheet" href="/assets/vendor/highlight/github-dark.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark">PQ</span>
+      <span class="brand-name">Blog Admin</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/blog.html" target="_blank" rel="noopener">Xem blog</a>
+    </nav>
+  </header>
+
+  <main class="page-main admin-page-main">
+    <section id="auth-section" class="admin-auth admin-card">
+      <p class="eyebrow">Private area</p>
+      <h1>Đăng nhập</h1>
+      <p class="page-description">Quản lý cây thư mục, trang và file đính kèm.</p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Tên đăng nhập</label>
+          <input id="login-username" class="form-control" type="text" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Mật khẩu</label>
+          <input id="login-password" class="form-control" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="button" type="submit">Đăng nhập</button>
+        <div id="auth-message" class="message" role="status"></div>
+      </form>
+    </section>
+
+    <section id="dashboard-section" class="admin-kb-shell hidden">
+      <aside class="admin-tree-panel">
+        <div class="admin-tree-header">
+          <div>
+            <p class="eyebrow">Cây blog</p>
+            <h2>Nội dung</h2>
+          </div>
+          <button id="logout-button" class="tree-icon-button" type="button" title="Đăng xuất">↪</button>
+        </div>
+
+        <div class="admin-tree-actions">
+          <button id="new-root-folder" class="button secondary" type="button">+ Folder</button>
+        </div>
+
+        <nav id="admin-tree" class="knowledge-tree admin-knowledge-tree" aria-label="Cây nội dung"></nav>
+      </aside>
+
+      <section class="admin-editor-panel">
+        <div id="editor-empty" class="admin-card editor-empty-state">
+          <p class="eyebrow">Blog đơn giản</p>
+          <h1>Chọn một node để bắt đầu</h1>
+          <p class="page-description">
+            Chọn folder/page trong sidebar hoặc tạo folder cấp gốc mới.
+          </p>
+        </div>
+
+        <div id="editor-workspace" class="admin-editor-workspace hidden">
+          <header class="admin-editor-toolbar">
+            <div>
+              <p id="editor-mode-label" class="eyebrow">Edit node</p>
+              <h1 id="editor-heading">Nội dung</h1>
+              <p id="editor-path" class="node-path">/</p>
+            </div>
+            <div class="editor-toolbar-actions">
+              <button id="new-child-folder" class="button secondary" type="button">+ Folder con</button>
+              <button id="new-child-page" class="button secondary" type="button">+ Page con</button>
+              <button id="move-up-button" class="tree-icon-button" type="button" title="Đưa lên">↑</button>
+              <button id="move-down-button" class="tree-icon-button" type="button" title="Đưa xuống">↓</button>
+              <button id="delete-node-button" class="button danger" type="button">Xóa</button>
+            </div>
+          </header>
+
+          <form id="node-form" class="admin-card node-editor-form">
+            <div class="node-form-grid">
+              <div class="form-group">
+                <label for="node-type">Loại node</label>
+                <select id="node-type" class="form-control" required disabled>
+                  <option value="folder">Folder</option>
+                  <option value="page">Page</option>
+                </select>
+              </div>
+
+              <div class="form-group node-title-field">
+                <label for="node-title">Tiêu đề</label>
+                <input id="node-title" class="form-control" type="text" maxlength="200" required>
+              </div>
+
+              <div class="form-group">
+                <label for="node-slug">Slug</label>
+                <input id="node-slug" class="form-control" type="text" maxlength="180" required>
+              </div>
+
+              <div class="form-group">
+                <label for="node-parent">Node cha</label>
+                <select id="node-parent" class="form-control"></select>
+              </div>
+
+              <div class="form-group">
+                <label for="node-order">Thứ tự</label>
+                <input id="node-order" class="form-control" type="number" step="1" value="0">
+              </div>
+
+              <div class="form-group node-tags-field page-only-field">
+                <label for="node-tags">Tags, cách nhau bằng dấu phẩy</label>
+                <input id="node-tags" class="form-control" type="text" placeholder="web-security, network, linux, lab">
+              </div>
+
+              <label class="publish-control">
+                <input id="node-published" type="checkbox">
+                <span>Hiển thị công khai</span>
+              </label>
+            </div>
+
+            <div id="node-stats" class="admin-page-stats page-only-field" aria-label="Thống kê page">
+              <span>👁 Lượt xem: <strong id="node-views">0</strong></span>
+              <span>♥ Lượt thích: <strong id="node-likes">0</strong></span>
+            </div>
+
+            <div class="form-group page-only-field">
+              <label for="cover-file">Ảnh bìa</label>
+              <input id="cover-file" class="form-control" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+              <input id="cover-image" type="hidden">
+              <img id="cover-preview" class="preview-image" alt="Xem trước ảnh bìa">
+            </div>
+
+            <div class="upload-editor-tools page-only-field">
+              <div class="form-group">
+                <label for="attachment-file">Ảnh hoặc file chèn vào nội dung</label>
+                <input id="attachment-file" class="form-control" type="file" multiple>
+              </div>
+              <button id="upload-button" class="button secondary" type="button">Upload & chèn Markdown</button>
+              <span id="upload-status" class="upload-status" role="status"></span>
+            </div>
+
+            <div class="markdown-editor-grid page-only-field">
+              <div class="form-group">
+                <label for="node-content">Nội dung Markdown</label>
+                <textarea id="node-content" class="form-control" placeholder="## Tổng quan&#10;&#10;Nội dung bài lab..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Xem trước</label>
+                <article id="markdown-preview" class="markdown-preview post-content"></article>
+              </div>
+            </div>
+
+            <div class="editor-save-row">
+              <button id="save-node-button" class="button" type="submit">Lưu node</button>
+              <div id="node-message" class="message" role="status"></div>
+            </div>
+          </form>
+
+          <section id="node-children-section" class="admin-card">
+            <div class="section-heading-row">
+              <div>
+                <p class="eyebrow">Direct children</p>
+                <h2>Node con</h2>
+              </div>
+            </div>
+            <div id="node-children" class="node-children-grid"></div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/assets/vendor/marked/marked.umd.js" defer></script>
+  <script src="/assets/vendor/dompurify/purify.min.js" defer></script>
+  <script src="/assets/vendor/highlight/highlight.min.js" defer></script>
+  <script src="/assets/js/markdown-renderer.js?v=5.0" defer></script>
+  <script src="/assets/js/admin.js?v=6.2" defer></script>
+</body>
+</html>

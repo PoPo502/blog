@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check config/storage.js && node --check middleware/auth.middleware.js && node --check middleware/rate-limiters.js && node --check models/PageReaction.js && node --check routes/auth.js && node --check routes/posts.js && node --check routes/nodes.js && node --check routes/upload.js && node --check services/docx-writeup-importer.js && node --check services/node-rules.js && node --check services/public-node-access.js && node --check services/visitor.js && node --check utils/api-error.js && node --check controllers/node.controller.js && node --check controllers/reaction.controller.js && node --check scripts/create-admin.js && node --check scripts/import-docx-writeup.js && node --check scripts/import-notion-md.js && node --check scripts/migrate-posts-to-nodes.js && node --check scripts/prepare-node-indexes.js && node --check scripts/recount-likes.js && node --check ../frontend/assets/js/admin.js && node --check ../frontend/assets/js/knowledge-base.js && node --check ../frontend/assets/js/markdown-renderer.js && node --check ../frontend/assets/js/theme-lang.js",
+    "create-admin": "node scripts/create-admin.js",
+    "migrate-posts": "node scripts/migrate-posts-to-nodes.js",
+    "import-writeup": "node scripts/import-docx-writeup.js",
+    "import-notion": "node scripts/import-notion-md.js",
+    "prepare-node-indexes": "node scripts/prepare-node-indexes.js",
+    "recount-likes": "node scripts/recount-likes.js",
+    "test": "npm run check && node --test tests/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.1",
+    "multer": "^2.1.1"
+  },
+  "devDependencies": {
+    "mammoth": "^1.12.0",
+    "mongodb-memory-server": "^11.2.0",
+    "supertest": "^7.2.2",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}

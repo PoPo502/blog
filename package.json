@@ -1,0 +1,17 @@
+{
+  "name": "pq-security-blog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "test": "npm --prefix backend test",
+    "audit": "npm --prefix backend audit",
+    "create-admin": "npm --prefix backend run create-admin --",
+    "migrate-posts": "npm --prefix backend run migrate-posts",
+    "import-writeup": "npm --prefix backend run import-writeup --",
+    "import-notion": "npm --prefix backend run import-notion --",
+    "prepare-node-indexes": "npm --prefix backend run prepare-node-indexes --",
+    "recount-likes": "npm --prefix backend run recount-likes --"
+  }
+}

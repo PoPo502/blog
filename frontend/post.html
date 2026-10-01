@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bài viết kỹ thuật của Phạm Đức Quân.">
+  <title>Bài viết | Phạm Đức Quân</title>
+  <link rel="icon" href="/assets/icons/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/custom-theme.css?v=7.2">
+  <link rel="stylesheet" href="/assets/vendor/highlight/github-dark.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Trang chủ">
+      <span class="brand-mark">PQ</span>
+      <span class="brand-name">Phạm Đức Quân</span>
+    </a>
+    <nav class="site-nav" aria-label="Điều hướng chính">
+      <a href="/" data-i18n="nav_home">Trang chủ</a>
+      <a class="active" href="/blog.html" data-i18n="nav_blog">Blog</a>
+      <a href="/about/" data-i18n="nav_about">About</a>
+      <div class="header-controls">
+        <button id="lang-toggle-btn" class="header-btn" type="button" aria-label="Đổi ngôn ngữ">EN</button>
+        <button id="theme-toggle-btn" class="header-btn" type="button" aria-label="Đổi giao diện">🌙</button>
+      </div>
+    </nav>
+  </header>
+  <script src="/assets/js/theme-lang.js" defer></script>
+
+  <main class="page-main">
+    <div id="post-container" class="reading-container" aria-live="polite"></div>
+  </main>
+
+
+  <script src="/assets/vendor/marked/marked.umd.js" defer></script>
+  <script src="/assets/vendor/dompurify/purify.min.js" defer></script>
+  <script src="/assets/vendor/highlight/highlight.min.js" defer></script>
+  <script src="/assets/js/markdown-renderer.js?v=5.0" defer></script>
+  <script src="/assets/js/fetch-single-post.js?v=5.0" defer></script>
+</body>
+</html>
